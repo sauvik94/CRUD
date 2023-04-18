@@ -1,4 +1,7 @@
-﻿namespace WebApplication1.Entities;
+﻿using System;
+using System.Collections.Generic;
+
+namespace WebApplication1.Entities;
 
 public partial class TblContact
 {
