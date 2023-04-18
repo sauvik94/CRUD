@@ -8,22 +8,22 @@ namespace WebApplication1.Service.Implementation
 {
     public class DataService : IDataService
     {
-        private readonly HelpdeskSbContext _dbContext; 
+        private readonly HelpdeskSbContext _dbContext;
         public DataService(HelpdeskSbContext dbContext)
         {
-            _dbContext = dbContext;   
+            _dbContext = dbContext;
         }
 
         public ContactDetails CreateData(Contacts Contact)
         {
             ContactDetails details = new ContactDetails();
             TblContact contact = new TblContact()
-                { 
-                    Email = Contact.Email,
-                    Name = Contact.Name
-                };
+            {
+                Email = Contact.Email,
+                Name = Contact.Name
+            };
             _dbContext.TblContacts.Add(contact);
-            if(_dbContext.SaveChangesAsync().Result == 1)
+            if (_dbContext.SaveChangesAsync().Result == 1)
             {
                 details.Email = Contact.Email;
                 details.Name = Contact.Name;
@@ -46,8 +46,8 @@ namespace WebApplication1.Service.Implementation
 
         public Task<List<ContactDetails>> Get()
         {
-            return _dbContext.TblContacts.Select(p => new ContactDetails 
-            { 
+            return _dbContext.TblContacts.Select(p => new ContactDetails
+            {
                 ContactId = p.ContactId,
                 Email = p.Email,
                 Name = p.Name
@@ -67,7 +67,7 @@ namespace WebApplication1.Service.Implementation
         public int Update(ContactUpdate ContactUpdate)
         {
             int IsFound = 0;
-            TblContact contact = _dbContext.TblContacts.FirstOrDefault(x => x.ContactId == ContactUpdate.ContactId);         
+            TblContact contact = _dbContext.TblContacts.FirstOrDefault(x => x.ContactId == ContactUpdate.ContactId);
             if (contact != null)
             {
                 contact.Email = ContactUpdate.Email;
