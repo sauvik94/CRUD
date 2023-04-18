@@ -78,15 +78,15 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="ContactId"></param>
         /// <returns></returns>
-        [HttpPut("[action]")]
-        public async Task<IActionResult> Update(ContactUpdate ContactUpdate)
-        {
-            int result = _dataService.Update(ContactUpdate);
-            if (result == 1)
-            {
-                return Ok(string.Format("{0} Contact Id is updated successfully!", ContactUpdate.ContactId));
-            }
-            return new ObjectResult(string.Format("{0} Contact Id is not present!", ContactUpdate.ContactId));
-        }
+        //[HttpPut("[action]")]
+        //public async Task<IActionResult> Update(ContactUpdate ContactUpdate)
+        //{
+        //    int result = _dataService.Update(ContactUpdate);
+        //    if (result == 1)
+        //    {
+        //        return Ok(string.Format("{0} Contact Id is updated successfully!", ContactUpdate.ContactId));
+        //    }
+        //    return new ObjectResult(string.Format("{0} Contact Id is not present!", ContactUpdate.ContactId));
+        //}
     }
 }
